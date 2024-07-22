@@ -68,7 +68,7 @@ class Main extends Sprite
 		  ['Flippy'],
 		  [FlxColor.fromRGB(215, 255, 167)],
 		  "no"
-    ]
+                 ]
 	];
 
 	// most of these variables are just from the base game!
@@ -127,9 +127,9 @@ class Main extends Sprite
 
 		// here we set up the base game
 		var gameCreate:FlxGame;
-		gameCreate = new FlxGame(gameWidth, gameHeight, mainClassState, zoom, framerate, framerate, skipSplash);
-		addChild(gameCreate); // and create it afterwards
-
+		gameCreate = new FlxGame(gameWidth, gameHeight, mainClassState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
+		addChild(gameCreate);
+		
 		// default game FPS settings, I'll probably comment over them later.
 		// addChild(new FPS(10, 3, 0xFFFFFF));
 
