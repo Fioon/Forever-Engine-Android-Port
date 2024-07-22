@@ -12,7 +12,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Flippy Flipped Out F.E" file="Forever-Engine" packageName="com.yoshubs.foreverengine" package="com.yoshubs.foreverengine" main="Main" version="0.2.7.1" company="Yoshubs" />
+	<app title="Forever Engine" file="Forever-Engine" packageName="com.yoshubs.foreverengine" package="com.yoshubs.foreverengine" main="Main" version="0.2.7.1" company="Yoshubs" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -55,7 +55,7 @@
 	<assets path="assets" />
 	<assets path="assets/songs"/>
 	<assets path="assets/music" preload="true"/>
-	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
+	<assets path="FE-CrashDialog.exe" type="template" if="mobile" />
 
 	<!--<assets path="mods" />-->
 
@@ -66,8 +66,11 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
+	<haxelib name="hscript" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
 	<haxelib name="polymod"/>
+	<haxelib name="extension-androidtools" if="android" />
+	<haxelib name="hxCodec"/> 
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -89,6 +92,13 @@
 	<!-- Always enable Null Object Reference check for crash dialog -->
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
+
+	<!-- Android permissions -->
+	<android permission="android.permission.ACCESS_NETWORK_STATE"/>
+	<android permission="android.permission.INTERNET"/>
+	<android permission="android.permission.VIBRATE"/>
+	<android permission="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<android permission="android.permission.READ_EXTERNAL_STORAGE"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
