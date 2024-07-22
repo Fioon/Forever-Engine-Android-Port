@@ -532,15 +532,15 @@ class ChartingState extends MusicBeatState
 	}
 
 	///*
-	var coolGrid:FlxBackdrop;
+	//var coolGrid:FlxBackdrop;
 	var coolGradient:FlxSprite;
 
 	private function generateBackground()
 	{
-		coolGrid = new FlxBackdrop(null, 1, 1, true, true, 1, 1);
+		/*coolGrid = new FlxBackdrop(null, 1, 1, true, true, 1, 1);
 		coolGrid.loadGraphic(Paths.image('UI/forever/base/chart editor/grid'));
 		coolGrid.alpha = (32 / 255);
-		add(coolGrid);
+		add(coolGrid);*/
 
 		// gradient
 		coolGradient = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height,
