@@ -160,6 +160,8 @@ class PlayState extends MusicBeatState
 	var mControls:MobileDefine;
 	#end
 
+	//public var camDisplaceExtend:Float = 40;
+
 	// at the beginning of the playstate
 	override public function create()
 	{
@@ -1187,7 +1189,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!Init.trueSettings.get('No Camera Note Movement'))
 		{
-			var camDisplaceExtend:Float = 15;
+			var camDisplaceExtend:Float = 40;
 			if (PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 			{
 				if ((PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && mustHit)
