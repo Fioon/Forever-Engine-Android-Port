@@ -219,7 +219,7 @@ class ChartingState extends MusicBeatState
 		arrowGroup.y = strumLine.y;
 
 		coolGradient.y = strumLineCam.y - (FlxG.height / 2);
-		coolGrid.y = strumLineCam.y - (FlxG.height / 2);
+		//coolGrid.y = strumLineCam.y - (FlxG.height / 2);
 
 		super.update(elapsed);
 
