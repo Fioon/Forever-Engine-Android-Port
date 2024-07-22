@@ -43,8 +43,7 @@ jobs:
 
       - name: Install Haxelibs
         run: |
-          haxelib install hmm --quiet
-          haxelib run hmm install --quiet
+          haxe -cp ./actions -D analyzer-optimize -main Main --interp
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
