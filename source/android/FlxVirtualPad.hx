@@ -8,6 +8,7 @@ import flixel.util.FlxDestroyUtil;
 import flixel.ui.FlxButton;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.FlxGraphic;
+import meta.state.PlayState;
 
 class FlxVirtualPad extends FlxSpriteGroup {
 	//Actions
@@ -52,7 +53,7 @@ class FlxVirtualPad extends FlxSpriteGroup {
 		super();
 
 		orgAntialiasing = antialiasingAlt;
-		orgAlpha = ClientPrefs.VirtualPadAlpha;
+		orgAlpha = PlayState.VirtualPadAlpha;
 
 		dPad = new FlxSpriteGroup();
 		dPad.scrollFactor.set();
