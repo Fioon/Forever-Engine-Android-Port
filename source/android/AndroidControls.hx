@@ -117,7 +117,7 @@ class AndroidControls extends FlxSpriteGroup {
 			  newhbox = new FlxNewHitbox();
 			  add(newhbox);
 			default:
-				vpad = new FlxVirtualPad(RIGHT_FULL, NONE, 0.75, ClientPrefs.globalAntialiasing);	
+				vpad = new FlxVirtualPad(RIGHT_FULL, NONE, 0.75, true);	
 				add(vpad);					
 		}
 	}
