@@ -14,7 +14,7 @@ import android.FlxVirtualPad;
 
 using StringTools;
 
-class AndroidControlsMenu extends MusicBeatState
+class AndroidControlsMenu extends MusicBeat
 {
 	var vpad:FlxVirtualPad;
 	var hbox:FlxHitbox;
