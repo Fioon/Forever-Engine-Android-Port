@@ -38,9 +38,10 @@ import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
 import openfl.utils.Assets;
-#if MOBILE_CONTROLS
+
+/*#if MOBILE_CONTROLS
 import android.MobileControls;
-#end
+#end*/
 
 using StringTools;
 
@@ -201,6 +202,12 @@ class PlayState extends MusicBeatState
 		allUIs.push(camHUD);
 		FlxCamera.defaultCameras = [camGame];
 
+		#if android
+		addAndroidControls();
+		androidc.visible = true;
+		androidc.alpha = 0.000001;
+		#end
+			
 		// default song
 		if (SONG == null)
 			SONG = Song.loadFromJson('test', 'test');
@@ -1189,7 +1196,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!Init.trueSettings.get('No Camera Note Movement'))
 		{
-			var camDisplaceExtend:Float = 40;
+			var camDisplaceExtend:Float = 45;
 			if (PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 			{
 				if ((PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection && mustHit)
@@ -1693,8 +1700,8 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-		#if MOBILE_CONTROLS
-		mControls.visible = false;
+		#if android
+		androidc.alpha = 0.00001;
 		#end
 		
 		canPause = false;
@@ -1915,9 +1922,11 @@ class PlayState extends MusicBeatState
 
 	private function startCountdown():Void
 	{
-		#if MOBILE_CONTROLS
-		mControls.visible = true;
-		#end
+		 #if android
+		androidc.visible = true;
+		if (checkHitbox != true) 
+		    androidc.alpha = 1;
+		 #end
 
 		inCutscene = false;
 		Conductor.songPosition = -(Conductor.crochet * 5);
