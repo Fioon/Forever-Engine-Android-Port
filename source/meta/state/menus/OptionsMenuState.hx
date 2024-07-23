@@ -54,10 +54,8 @@ class OptionsMenuState extends MusicBeatState
 				[
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
-					#if windows
 					['controls', openControlmenu],
-					#end
-					#if MOBILE_CONTROLS
+					#if android
 					['mobile controls', openMobilecontrols],
 					#end
 					['exit', exitMenu]
@@ -138,7 +136,7 @@ class OptionsMenuState extends MusicBeatState
 		infoText.textField.backgroundColor = FlxColor.BLACK;
 		add(infoText);
 
-		#if MOBILE_CONTROLS
+		#if android
 		addVirtualPad(FULL, A_B);
 		#end
 
