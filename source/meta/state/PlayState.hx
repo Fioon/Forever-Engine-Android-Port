@@ -52,6 +52,7 @@ import meta.data.dependency.Discord;
 class PlayState extends MusicBeatState
 {
         public static var hitboxExtend:Bool = true;
+	public static var checkHitbox:Bool = false;
 	public static var hitboxLocation:String = 'Bottom';    
 	public static var hitboxalpha:Float = 0.3;
         public static var VirtualPadAlpha:Float = 0.75;
@@ -359,30 +360,6 @@ class PlayState extends MusicBeatState
 		dialogueHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(dialogueHUD);
 
-		#if MOBILE_CONTROLS
-		mControls = new MobileDefine();
-
-		switch (mControls.mode)
-		{
-			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
-				controls.setVirtualPad(mControls.virtualPad, FULL, NONE);
-			case HITBOX:
-				controls.setHitBox(mControls.hitbox);
-			default:
-		}
-
-		trackedInputs = controls.trackedInputs;
-		controls.trackedInputs = [];
-			
-		var camControl = new FlxCamera();
-		FlxG.cameras.add(camControl);
-		camControl.bgColor.alpha = 0;
-		mControls.cameras = [camControl];
-		mControls.visible = false;
-		add(mControls);
-		#end
-
-		//
 		keysArray = [
 			copyKey(Init.gameControls.get('LEFT')[0]),
 			copyKey(Init.gameControls.get('DOWN')[0]),
