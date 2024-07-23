@@ -9,6 +9,7 @@ import meta.*;
 import meta.data.*;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.dependency.FNFUIState;
+import meta.state.PlayState;
 #if android
 import flixel.input.actions.FlxActionInput;
 import android.AndroidControls.AndroidControls;
@@ -70,13 +71,13 @@ class MusicBeatState extends FNFUIState
 		{
 			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
 				controls.setVirtualPadNOTES(androidc.vpad, FULL, NONE);
-				checkHitbox = false;
+				PlayState.checkHitbox = false;
 			case DUO:
 				controls.setVirtualPadNOTES(androidc.vpad, DUO, NONE);
-				checkHitbox = false;
+				PlayState.checkHitbox = false;
 			case HITBOX:
 				controls.setNewHitBox(androidc.newhbox);
-				checkHitbox = true;
+				PlayState.checkHitbox = true;
 			default:
 		}
 
@@ -242,7 +243,7 @@ class MusicBeatSubState extends FlxSubState
 	
 	#if android
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
-		_virtualpad = new FlxVirtualPad(DPad, Action, 0.75, ClientPrefs.globalAntialiasing);
+		_virtualpad = new FlxVirtualPad(DPad, Action, 0.75, true);
 		add(_virtualpad);
 		controls.setVirtualPadUI(_virtualpad, DPad, Action);
 		trackedinputsUI = controls.trackedinputsUI;
