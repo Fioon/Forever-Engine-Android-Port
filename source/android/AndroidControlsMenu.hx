@@ -12,6 +12,7 @@ import android.FlxNewHitbox;
 import android.AndroidControls.Config;
 import android.FlxVirtualPad;
 import meta.MusicBeat.MusicBeatState;
+import meta.state.PlayState;
 import android.PsychAlphabet;
 
 using StringTools;
@@ -139,7 +140,7 @@ class AndroidControlsMenu extends MusicBeatState
 		{
 			save();
 			FlxTransitionableState.skipNextTransIn = true;
-			FlxTransitionableState.skipNextTransOut = true;
+			//FlxTransitionableState.skipNextTransOut = true;
 			Main.switchState(new meta.state.menus.OptionsMenuState());
 		}
 		#end
