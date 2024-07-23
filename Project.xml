@@ -6,7 +6,7 @@
 	<!-- Forever Engine v0.3.1 - Android Port by Musk-h c: -->
 	<define name="MOBILE_CONTROLS" if="android"/>
 
-	<assets path="assets/android"/>
+	<assets path="assets/images/androidcontrols"/>
 
 	<android target-sdk-version = "29"/>
 
