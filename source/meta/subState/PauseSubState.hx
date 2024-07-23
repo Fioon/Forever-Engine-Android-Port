@@ -112,7 +112,7 @@ class PauseSubState extends MusicBeatSubState
 		// trace('cameras done');
 		#end
 
-		#if MOBILE_CONTROLS
+		#if android
 		addVirtualPad(UP_DOWN, A);
 		addPadCamera();
 		#end
