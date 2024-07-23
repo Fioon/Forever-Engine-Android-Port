@@ -57,7 +57,7 @@ class GameOverSubstate extends MusicBeatSubState
 
 		bf.playAnim('firstDeath');
 
-		#if MOBILE_CONTROLS
+		#if android
 		addVirtualPad(NONE, A_B);
 		addPadCamera();
 		#end
