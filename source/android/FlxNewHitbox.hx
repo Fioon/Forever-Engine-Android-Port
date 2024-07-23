@@ -5,6 +5,7 @@ import flixel.group.FlxSpriteGroup;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
 import android.flixel.FlxButton;
+import meta.state.PlayState;
 
 /**
  * A zone with 4 hint's (A hitbox).
@@ -27,14 +28,14 @@ class FlxNewHitbox extends FlxSpriteGroup
 	public function new():Void
 	{
 		super();
-        if (ClientPrefs.hitboxExtend != true){
+        if (PlayState.hitboxExtend != true){
             add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 1), 0xFF00FF));
 		    add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 1), 0x00FFFF));
 		    add(buttonUp = createHint(FlxG.width / 2, 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 1), 0x00FF00));
 		    add(buttonRight = createHint((FlxG.width / 2) + (FlxG.width / 4), 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 1), 0xFF0000));
         }
         else{
-            if (ClientPrefs.hitboxLocation == 'Bottom'){
+            if (PlayState.hitboxLocation == 'Bottom'){
         
 		        add(buttonLeft = createHint(0, 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 0.8), 0xFF00FF));
 		        add(buttonDown = createHint(FlxG.width / 4, 0, Std.int(FlxG.width / 4), Std.int(FlxG.height * 0.8), 0x00FFFF));
@@ -43,7 +44,7 @@ class FlxNewHitbox extends FlxSpriteGroup
                 add(buttonSpace = createHint(0, (FlxG.height / 5) * 4, FlxG.width, Std.int(FlxG.height / 5), 0xFFFF00));
 		    
 		    }
-		    else if (ClientPrefs.hitboxLocation == 'Top'){
+		    else if (PlayState.hitboxLocation == 'Top'){
 		        add(buttonLeft = createHint(0, (FlxG.height / 5) * 1, Std.int(FlxG.width / 4), Std.int(FlxG.height * 0.8), 0xFF00FF));
 		        add(buttonDown = createHint(FlxG.width / 4, (FlxG.height / 5) * 1, Std.int(FlxG.width / 4), Std.int(FlxG.height * 0.8), 0x00FFFF));
 		        add(buttonUp = createHint(FlxG.width / 2, (FlxG.height / 5) * 1, Std.int(FlxG.width / 4), Std.int(FlxG.height * 0.8), 0x00FF00));
@@ -103,8 +104,8 @@ class FlxNewHitbox extends FlxSpriteGroup
 		hint.alpha = 0.00001;
 		hint.onDown.callback = hint.onOver.callback = function()
 		{
-			if (hint.alpha != ClientPrefs.hitboxalpha)
-				hint.alpha = ClientPrefs.hitboxalpha;
+			if (hint.alpha != PlayState.hitboxalpha)
+				hint.alpha = PlayState.hitboxalpha;
 		}
 		hint.onUp.callback = hint.onOut.callback = function()
 		{
