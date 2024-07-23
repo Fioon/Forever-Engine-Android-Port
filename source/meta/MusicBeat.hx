@@ -46,7 +46,7 @@ class MusicBeatState extends FNFUIState
 	
 	#if android
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
-		_virtualpad = new FlxVirtualPad(DPad, Action, 0.75, ClientPrefs.globalAntialiasing);
+		_virtualpad = new FlxVirtualPad(DPad, Action, 0.75, true);
 		add(_virtualpad);
 		controls.setVirtualPadUI(_virtualpad, DPad, Action);
 		trackedinputsUI = controls.trackedinputsUI;
