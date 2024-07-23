@@ -51,6 +51,11 @@ import meta.data.dependency.Discord;
 
 class PlayState extends MusicBeatState
 {
+        public static var hitboxExtend:Bool = true;
+	public static var hitboxLocation:String = 'Bottom';    
+	public static var hitboxalpha:Float = 0.3;
+        public static var VirtualPadAlpha:Float = 0.75;
+	
 	public static var startTimer:FlxTimer;
 
 	public static var curStage:String = '';
