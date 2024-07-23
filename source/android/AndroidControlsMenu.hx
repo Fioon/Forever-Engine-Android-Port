@@ -11,10 +11,11 @@ import android.FlxHitbox;
 import android.FlxNewHitbox;
 import android.AndroidControls.Config;
 import android.FlxVirtualPad;
+import meta.MusicBeat.MusicBeatState;
 
 using StringTools;
 
-class AndroidControlsMenu extends MusicBeat
+class AndroidControlsMenu extends MusicBeatState
 {
 	var vpad:FlxVirtualPad;
 	var hbox:FlxHitbox;
