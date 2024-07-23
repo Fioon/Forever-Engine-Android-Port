@@ -162,9 +162,9 @@ class PlayState extends MusicBeatState
 	// stores the last combo objects in an array
 	public static var lastCombo:Array<FlxSprite>;
 
-	#if MOBILE_CONTROLS
+	/*#if MOBILE_CONTROLS
 	var mControls:MobileDefine;
-	#end
+	#end*/
 
 	//public var camDisplaceExtend:Float = 40;
 
