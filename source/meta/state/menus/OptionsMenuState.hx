@@ -571,7 +571,7 @@ class OptionsMenuState extends MusicBeatState
 	{
 		if (controls.ACCEPT)
 		{
-			Main.switchState(this, new android.MobileControls());
+			Main.switchState(this, new android.AndroidControlsMenu());
 		}
 	}
 
