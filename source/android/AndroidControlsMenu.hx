@@ -49,8 +49,8 @@ class AndroidControlsMenu extends MusicBeatState
 		add(bg);
 
 		var titleText:PsychAlphabet = new PsychAlphabet(75, 60, "Android Controls", false, false, 0.05, 0.8);
-		titleText.scaleX = 0.6;
-		titleText.scaleY = 0.6;
+		//titleText.scaleX = 0.6;
+		//titleText.scaleY = 0.6;
 		titleText.alpha = 0.4;
 		add(titleText);
 
@@ -140,8 +140,8 @@ class AndroidControlsMenu extends MusicBeatState
 		{
 			save();
 			FlxTransitionableState.skipNextTransIn = true;
-			//FlxTransitionableState.skipNextTransOut = true;
-			Main.switchState(new meta.state.menus.OptionsMenuState());
+			FlxTransitionableState.skipNextTransOut = true;
+			Main.switchState(this, new meta.state.menus.OptionsMenuState());
 		}
 		#end
 	}
