@@ -53,7 +53,8 @@ class PlayState extends MusicBeatState
 {
         public static var hitboxExtend:Bool = true;
 	public static var checkHitbox:Bool = false;
-	public static var hitboxLocation:String = 'Bottom';    
+	public static var hitboxLocation:String = 'Bottom';
+        public static var hitboxmode:String = 'New';
 	public static var hitboxalpha:Float = 0.3;
         public static var VirtualPadAlpha:Float = 0.75;
 	
