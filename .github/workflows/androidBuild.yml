@@ -108,7 +108,7 @@ jobs:
           key: cache-android-build-gcc
           
       - name: Publish Artifact
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v4
         with:
           name: androidBuild
           path: export/release/android/bin/app/build/outputs/apk/debug
