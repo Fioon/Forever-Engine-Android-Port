@@ -460,38 +460,85 @@ class Character extends FNFSprite
 
 				playAnim('idle');
 				
-			case 'Flippy':
-			  frames = Paths.getSparrowAtlas('characters/FLIPPY_onslaught');
-			  
-			  animation.addByPrefix('idle', 'FLIPPY Idle', 24, false);
-			  animation.addByPrefix('singDOWN', 'FLP M DOWN', 24, false);
-			  animation.addByPrefix('singUP', 'FLP M UP', 24, false);
-			  animation.addByPrefix('singLEFT', 'FLP M LEFT', 24, false);
-			  animation.addByPrefix('singRIGHT', 'FLP M RIGHT', 24, false);
-			  
-			  playAnim('idle');
-			  
-			case 'flippy-blood':
-			  frames = Paths.getSparrowAtlas('characters/FLIPPY_bloody');
-			  
-			  animation.addByPrefix('idle', 'FLIPPY Idle', 24, false);
-			  animation.addByPrefix('singDOWN', 'FLP M DOWN', 24, false);
-			  animation.addByPrefix('singUP', 'FLP M UP', 24, false);
-			  animation.addByPrefix('singLEFT', 'FLP M LEFT', 24, false);
-			  animation.addByPrefix('singRIGHT', 'FLP M RIGHT', 24, false);
-			  
-			  playAnim('idle');
-			  
-			case 'flippy-crazy':
-			  frames = Paths.getSparrowAtlas('characters/FLIPPY_crazy');
-			  
-			  animation.addByPrefix('idle', 'FLP3 idle', 24, false);
-			  animation.addByPrefix('singDOWN', 'FLP3 M DOWN', 24, false);
-			  animation.addByPrefix('singUP', 'FLP3 M UP', 24, false);
-			  animation.addByPrefix('singLEFT', 'FLP3 M LEFT', 24, false);
-			  animation.addByPrefix('singRIGHT', 'FLP3 M RIGHT', 24, false);
-			  
-			  playAnim('idle');
+			case 'player':
+				frames = Paths.getSparrowAtlas('characters/if/ft_boyfriend');
+
+				animation.addByPrefix('idle', 'idle instance', 24, true);
+				animation.addByPrefix('singUP', 'up instance', 24, false);
+				animation.addByPrefix('singLEFT', 'right instance', 24, false);
+				animation.addByPrefix('singRIGHT', 'left instance', 24, false);
+				animation.addByPrefix('singDOWN', 'down instance', 24, false);
+				addOffset('idle', -156, 80);
+				addOffset('singUP', -161, 90);
+				addOffset('singDOWN', -152, 69);
+				addOffset('singLEFT', -133, 78); //left
+				addOffset('singRIGHT', -172, 80); //right
+				characterData.offsetX = -275;
+				characterData.offsetY = -550;
+				characterData.camOffsetX = -255;
+				characterData.camOffsetY = -40;
+				flipX = true;
+				playAnim('idle');
+
+			case 'ftBf':
+				frames = Paths.getSparrowAtlas('characters/if/ft_boyfriend');
+
+				animation.addByPrefix('idle', 'idle instance', 24, true);
+				animation.addByPrefix('singUP', 'up instance', 24, false);
+				animation.addByPrefix('singLEFT', 'left instance', 24, false);
+				animation.addByPrefix('singRIGHT', 'right instance', 24, false);
+				animation.addByPrefix('singDOWN', 'down instance', 24, false);
+				addOffset('idle', -156, 80);
+				addOffset('singUP', -161, 90);
+				addOffset('singDOWN', -152, 69);
+				addOffset('singLEFT', -133, 78); //left
+				addOffset('singRIGHT',-172, 80); //right
+				characterData.offsetX = -275;
+				characterData.offsetY = -550;
+				characterData.camOffsetX = -255;
+				characterData.camOffsetY = -40;
+				flipX = false;
+				playAnim('idle');
+
+			case 'falseThorn':
+				frames = Paths.getSparrowAtlas('characters/if/falsethorn');
+
+				animation.addByPrefix('idle', 'falsethorn idle instance', 24, true);
+				animation.addByPrefix('singUP', 'falsethorn up instance', 24, false);
+				animation.addByPrefix('singLEFT', 'falsethorn left instance', 24, false);
+				animation.addByPrefix('singRIGHT', 'falsethorn right instance', 24, false);
+				animation.addByPrefix('singDOWN', 'falsethorn down- instance 1', 24, false);
+				animation.addByPrefix('laugh', 'falsehorn laugh instance', 24, false);
+				addOffset('idle', -333, 160);
+				addOffset('singUP', -363, 259);
+				addOffset('singDOWN', -176, -66);
+				addOffset('singLEFT', -193, 166);
+				addOffset('singRIGHT', -311, 207);
+				addOffset('laugh', -262, 176);
+				characterData.offsetX = -275;
+				characterData.offsetY = -550;
+				characterData.camOffsetX = 0;
+				characterData.camOffsetY = 0;
+				playAnim('idle');
+			case 'gfIcon':
+				frames = Paths.getSparrowAtlas('characters/if/icon-gf');
+
+				animation.addByPrefix('idle', 'Idle', 24, true);
+				animation.addByPrefix('singUP', 'Up', 24, false);
+				animation.addByPrefix('singLEFT', 'Left', 24, false);
+				animation.addByPrefix('singRIGHT', 'Right', 24, false);
+				animation.addByPrefix('singDOWN', 'Down', 24, false);
+				addOffset('idle', -156, 131);
+				addOffset('singUP', -156, 134);
+				addOffset('singDOWN', -155, 130);
+				addOffset('singLEFT', -152, 130);
+				addOffset('singRIGHT', -157, 130);
+				characterData.offsetX = -275;
+				characterData.offsetY = -550;
+				characterData.camOffsetX = 0;
+				characterData.camOffsetY = 0;
+				flipX = false;
+				playAnim('idle');
 			  
 			default:
 				// set up animations if they aren't already
