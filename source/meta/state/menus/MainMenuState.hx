@@ -29,7 +29,7 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['freeplay', 'options'];
 	var canSnap:Array<Float> = [];
 
 	// the create 'state'
@@ -239,8 +239,8 @@ class MainMenuState extends MusicBeatState
 
 						switch (daChoice)
 						{
-							case 'story mode':
-								Main.switchState(this, new StoryMenuState());
+							//case 'story mode':
+								//Main.switchState(this, new StoryMenuState());
 							case 'freeplay':
 								Main.switchState(this, new FreeplayState());
 							case 'options':
