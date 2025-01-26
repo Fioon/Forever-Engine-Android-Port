@@ -38,6 +38,8 @@ import openfl.events.KeyboardEvent;
 import openfl.filters.ShaderFilter;
 import openfl.media.Sound;
 import openfl.utils.Assets;
+import hxvlc.flixel.FlxVideoSprite as MP4Sprite;
+import hxvlc.flixel.FlxVideo;
 
 /*#if MOBILE_CONTROLS
 import android.MobileControls;
@@ -122,6 +124,7 @@ class PlayState extends MusicBeatState
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
 
+	public static var camOverlay:FlxCamera;
 	public static var camHUD:FlxCamera;
 	public static var camGame:FlxCamera;
 	public static var dialogueHUD:FlxCamera;
@@ -157,6 +160,10 @@ class PlayState extends MusicBeatState
 	public static var strumLines:FlxTypedGroup<Strumline>;
 	public static var strumHUD:Array<FlxCamera> = [];
 
+	private var dadStrumSingCharacters:Array<Character> = [];
+	private var boyfriendStrumSingCharacters:Array<Character> = [];
+	private var gfStrumSingCharacters:Array<Character> = [];
+
 	private var allUIs:Array<FlxCamera> = [];
 
 	// stores the last judgement object
@@ -169,6 +176,15 @@ class PlayState extends MusicBeatState
 	#end*/
 
 	//public var camDisplaceExtend:Float = 40;
+	
+	var ftBf:Character;
+	var scopeVin:FlxSprite;
+	var video; // black hole
+        var video2; // wave efx
+        var video3; // snow
+	var forest:FlxSpriteGroup;
+        var spotlight:FlxSprite;
+	
 
 	// at the beginning of the playstate
 	override public function create()
@@ -200,11 +216,14 @@ class PlayState extends MusicBeatState
 		// create the game camera
 		camGame = new FlxCamera();
 
+		camOverlay = new FlxCamera();
+		camOverlay.bgColor.alpha = 0;
 		// create the hud camera (separate so the hud stays on screen)
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
+		FlxG.cameras.add(camOverlay);
 		FlxG.cameras.add(camHUD);
 		allUIs.push(camHUD);
 		FlxCamera.defaultCameras = [camGame];
@@ -236,19 +255,82 @@ class PlayState extends MusicBeatState
 		displayRating('sick', 'early', true);
 		popUpCombo(true);
 		//
+		switch (curSong.toLowerCase())
+		{
+			case "pretence":
+				ftBf = new Character().setCharacter(-15, -540, 'ftBf');
+				dadStrumSingCharacters.push(ftBf);
+				ftBf.setPosition(-15,-540);
+				add(ftBf);
+				ftBf.dance();
 
-		stageBuild = new Stage(curStage);
-		add(stageBuild);
+				addStreetShit();
+				
+				forest = new FlxSpriteGroup();
+				add(forest);
+				addForestShit();
+				
+				scopeVin = new FlxSprite();
+				scopeVin.frames = Paths.getSparrowAtlas('scopeVin');
+				scopeVin.animation.addByPrefix("idle", 'scopeVin idle', 20, true);
+				scopeVin.animation.play("idle", true);
+				scopeVin.scrollFactor.set(0,0);
+				scopeVin.scale.set(1.6,1.61);
+				scopeVin.antialiasing = true;
+				scopeVin.alpha = 0;
+				scopeVin.blend = 0;
+				scopeVin.cameras = [camOverlay];
+				add(scopeVin);
+				scopeVin.setPosition(241,135);
+				
+				video2 = new MP4Sprite();
+				video2.bitmap.onFormatSetup.add(function():Void
+				{
+					video2.scale.set(1,1);
+					video2.scrollFactor.set(0,0);
+					video2.setPosition(0,0);
+				});
+				video2.bitmap.onEndReached.add(video2.destroy);
+				add(video2);
+				//video.blend = 0;
+				video2.load(Paths.video('waveEffect'), [':input-repeat=65545']);
+				video2.play();
+				video2.alpha = 0;
+				video2.cameras = [camOverlay];
+
+				video3 = new MP4Sprite();
+				video3.bitmap.onFormatSetup.add(function():Void
+				{
+					video3.scale.set(1.1,1.1);
+					video3.scrollFactor.set(0,0);
+					video3.setPosition(3,4);
+				});
+				video3.bitmap.onEndReached.add(video3.destroy);
+				add(video3);
+				video3.blend = 0;
+				video3.load(Paths.video('snow light'), [':input-repeat=65545']);
+				video3.play();
+				video3.alpha = 1;
+				video3.cameras = [camOverlay];
+				
+			default:
+				stageBuild = new Stage(curStage);
+				add(stageBuild);
+		}
 
 		// set up characters here too
 		gf = new Character();
 		gf.adjustPos = false;
 		gf.setCharacter(300, 100, stageBuild.returnGFtype(curStage));
 		gf.scrollFactor.set(0.95, 0.95);
+		gfStrumSingCharacters.push(gf);
 
 		dadOpponent = new Character().setCharacter(50, 850, SONG.player2);
+		dadStrumSingCharacters.push(dadOpponent);
+		
 		boyfriend = new Boyfriend();
 		boyfriend.setCharacter(750, 850, SONG.player1);
+		boyfriendStrumSingCharacters.push(boyfriend);
 		// if you want to change characters later use setCharacter() instead of new or it will break
 
 		var camPos:FlxPoint = new FlxPoint(gf.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
@@ -413,7 +495,117 @@ class PlayState extends MusicBeatState
 			FlxG.camera.setFilters([new ShaderFilter(shader)]);
 		 */
 	}
+	
+        public function addStreetShit():Void
+	{
+		var layer1:FlxSprite = new FlxSprite(-340,-485).loadGraphic(Paths.image('layer1'));
+		layer1.scale.set(0.8,0.8);
+		layer1.antialiasing = true;
+		layer1.scrollFactor.set(0, 0);
+		add(layer1);
 
+		var layer2:FlxSprite = new FlxSprite(-470,-970).loadGraphic(Paths.image('layer2'));
+		layer2.scale.set(0.8,0.8);
+		layer2.antialiasing = true;
+		layer2.scrollFactor.set(0.4, 0.8);
+		add(layer2);
+
+		var layer3:FlxSprite = new FlxSprite(-620,-1040).loadGraphic(Paths.image('layer3'));
+		layer3.scale.set(1.2, 1.2);
+		layer3.antialiasing = true;
+		layer3.scrollFactor.set(0.9, 0.9);
+		add(layer3);
+
+		var layer3bg:FlxSprite = new FlxSprite(-380,-1154).loadGraphic(Paths.image('layer3bg'));
+		layer3bg.scale.set(1.7, 1.7);
+		layer3bg.antialiasing = true;
+		layer3bg.scrollFactor.set(0.2, 0.95);
+		add(layer3bg);
+
+		var layer4:FlxSprite = new FlxSprite(-620,-1040).loadGraphic(Paths.image('layer4'));
+		layer4.scale.set(1.2, 1.2);
+		layer4.antialiasing = true;
+		layer4.scrollFactor.set(0.9, 0.9);
+		add(layer4);
+
+		spotlight = new FlxSprite(-620,-1130).loadGraphic(Paths.image('layer5'));
+		spotlight.scale.set(1, 1);
+		spotlight.antialiasing = true;
+		spotlight.scrollFactor.set(0.9, 0.9);
+		add(spotlight);
+		spotlight.blend = 0;
+		spotlight.scale.set(1.4, 1.2);
+
+		var shadow:FlxSprite = new FlxSprite(100,-230).loadGraphic(Paths.image('shadow'));
+		shadow.scale.set(1.2, 1.2);
+		shadow.antialiasing = true;
+		shadow.scrollFactor.set(0.9, 0.9);
+		add(shadow);
+	}
+	
+	public function addForestShit():Void
+	{
+		var layer0:FlxSprite = new FlxSprite(-340,-245).loadGraphic(Paths.image('forestlayer0'));
+		layer0.scale.set(0.6,0.6);
+		layer0.antialiasing = true;
+		forest.add(layer0);
+		layer0.scrollFactor.set(0, 0);
+
+		video = new MP4Sprite();
+		video.bitmap.onFormatSetup.add(function():Void
+		{
+			video.scale.set(0.9,0.9);
+			video.updateHitbox();
+			video.scrollFactor.set(0,0);
+			video.setPosition(0,-20);
+			video.screenCenter();
+		});
+		video.bitmap.onEndReached.add(video.destroy);
+		forest.add(video);
+		video.load(Paths.video('blackhole'), [':input-repeat=65545']);
+		video.play();
+		video.alpha = 1;
+
+    var layer05:FlxSprite = new FlxSprite(-200,-25).loadGraphic(Paths.image('forestlayer05'));
+    layer05.scale.set(0.8,0.7);
+    layer05.antialiasing = true;
+    forest.add(layer05);
+    FlxTween.tween(layer05, {x: -1210}, 205.0);
+    layer05.alpha = 0.7;
+    layer05.scrollFactor.set(0, 0);
+    layer05.blend = 0;
+
+    var layer1:FlxSprite = new FlxSprite(-397,-585).loadGraphic(Paths.image('forestlayer1'));
+    layer1.scale.set(0.7,0.7);
+    layer1.antialiasing = true;
+    forest.add(layer1);
+    layer1.scrollFactor.set(0.2, 0.4);
+
+    var layer2:FlxSprite = new FlxSprite(-500,-630).loadGraphic(Paths.image('forestlayer2'));
+    layer2.scale.set(0.7,0.7);
+    layer2.antialiasing = true;
+    forest.add(layer2);
+    layer2.scrollFactor.set(0.5, 0.5);
+
+    var layer3:FlxSprite = new FlxSprite(-568,-948).loadGraphic(Paths.image('forestlayer3'));
+    layer3.scale.set(1.1,1.1);
+    layer3.antialiasing = true;
+    forest.add(layer3);
+    layer3.scrollFactor.set(0.7, 0.8);
+
+    var layer4:FlxSprite = new FlxSprite(-632,-1010).loadGraphic(Paths.image('forestlayer4'));
+    layer4.scale.set(1.1,1.1);
+    layer4.antialiasing = true;
+    forest.add(layer4);
+    layer4.scrollFactor.set(0.9, 0.9);
+
+    var shadow:FlxSprite = new FlxSprite(100,-230).loadGraphic(Paths.image('shadow'));
+    shadow.scale.set(1.2, 1.2);
+    shadow.antialiasing = true;
+    forest.add(shadow);
+    shadow.scrollFactor.set(0.9, 0.9);
+	}
+	
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey>
 	{
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();
@@ -992,7 +1184,29 @@ class PlayState extends MusicBeatState
 			coolNote.wasGoodHit = true;
 			vocals.volume = 1;
 
-			characterPlayAnimation(coolNote, character);
+			//characterPlayAnimation(coolNote, character);
+			
+			if (character == boyfriend)
+			{
+				for (curChar in boyfriendStrumSingCharacters){
+					characterPlayAnimation(coolNote, curChar);
+				}
+			}
+			if (character == dadOpponent)
+			{
+				for (curChar in dadStrumSingCharacters)
+				{
+					characterPlayAnimation(coolNote, curChar);
+				}
+			}
+			if (character == gf)
+			{
+				for (curChar in gfStrumSingCharacters)
+				{
+					characterPlayAnimation(coolNote, curChar);
+				}
+			}
+			
 			if (characterStrums.receptors.members[coolNote.noteData] != null)
 				characterStrums.receptors.members[coolNote.noteData].playAnim('confirm', true);
 
