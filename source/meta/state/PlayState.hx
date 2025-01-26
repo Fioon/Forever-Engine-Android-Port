@@ -53,7 +53,7 @@ import meta.data.dependency.Discord;
 
 class PlayState extends MusicBeatState
 {
-        public static var hitboxExtend:Bool = true;
+        public static var hitboxExtend:Bool = false;
 	public static var checkHitbox:Bool = false;
 	public static var hitboxLocation:String = 'Bottom';
         public static var hitboxmode:String = 'New';
