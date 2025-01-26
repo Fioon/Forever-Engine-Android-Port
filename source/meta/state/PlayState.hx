@@ -354,8 +354,14 @@ class PlayState extends MusicBeatState
 
 		add(dadOpponent);
 		add(boyfriend);
-
-		add(stageBuild.foreground);
+		
+                if(curSong.toLowerCase() == 'pretence'){
+			dadOpponent.alpha = 0;
+			boyfriend.alpha = 0;
+			gf.alpha = 0;
+		}else{
+			add(stageBuild.foreground);
+		}
 
 		// force them to dance
 		dadOpponent.dance();
