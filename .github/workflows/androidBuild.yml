@@ -59,6 +59,7 @@ jobs:
           haxelib set flixel-addons 3.2.2
           haxelib set extension-androidtools 1.4.0
           haxelib set hscript 2.5.0
+          haxelib set hxvlc 1.9.2
          
           haxelib list
         env:
