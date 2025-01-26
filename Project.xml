@@ -68,9 +68,9 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="hscript" />
 	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
-	<haxelib name="polymod"/>
+	<haxelib name="hxcpp"/>
 	<haxelib name="extension-androidtools" if="android" />
-	<haxelib name="hxCodec"/> 
+	<haxelib name="hxvlc"/> 
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
