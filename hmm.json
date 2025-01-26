@@ -41,11 +41,16 @@
          "version": "1.4.0"
       },
       {
-         "name": "hxCodec",
+         "name": "hxvlc",
+         "type": "install",
+         "version": "1.9.2"
+      },
+      {
+         "name": "hxcpp",
          "type": "git",
          "dir": null,
          "ref": "master",
-         "url": "https://github.com/SPLCoding/hxCodec-but-it-works-xd"
+         "url": "https://github.com/mcagabe19-stuff/hxcpp"
       },
       {
          "name": "discord_rpc",
