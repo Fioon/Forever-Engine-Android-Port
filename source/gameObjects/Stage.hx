@@ -82,14 +82,8 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					curStage = 'school';
 				case 'thorns':
 					curStage = 'schoolEvil';
-        case 'triggered':
-          curStage = 'camp';
-        case 'slaughter':
-          curStage = 'camp';
-        case 'overkill':
-          curStage = 'camp';
-        case 'fallout':
-          curStage = 'camp';
+				case 'pretence':
+					curStage = 'pretenceStreet';
 				default:
 					curStage = 'stage';
 			}
@@ -347,27 +341,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.scrollFactor.set(0.8, 0.9);
 				bg.scale.set(6, 6);
 				add(bg);
-      case 'camp':
-        PlayState.defaultCamZoom = 0.6;
-
-        var bgSky:FNFSprite = new FNFSprite(-600, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/sky'));
-        add(bgSky);
-       
-        var bt:FNFSprite = new FNFSprite(-600, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/backtrees'));
-        bt.scrollFactor.set(0.5, 0.5);
-        add(bt);
-        
-        var Trees:FNFSprite = new FNFSprite(-600, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/trees'));
-        bt.scrollFactor.set(0.8, 0.8);
-        add(Trees);
-        
-        var ground:FNFSprite = new FNFSprite(-600, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/ground'));
-        add(ground);
-        
-        Mesita = new FNFSprite(-600, -300).loadGraphic(Paths.image('backgrounds/' + curStage + '/table'));
-        Mesita.scrollFactor.set(1.2, 1.2);
-        add(Mesita);
-       
 			default:
 				PlayState.defaultCamZoom = 0.9;
 				curStage = 'stage';
@@ -478,13 +451,11 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
-			case 'camp':
-			  dad.x += 50;
-			  dad.y -= 100;
-			  boyfriend.x += 200;
-				boyfriend.y += 220;
-				gf.y += 50;
-				gf.x -= 50;
+			case 'pretenceStreet':
+				boyfriend.setPosition(-15, -540);
+				dad.setPosition(-260, -540);
+				gf.setPosition(-15, -500);
+				//PlayState.defaultCamZoom = 1.15;
 		}
 	}
 
@@ -550,12 +521,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					trainCooldown = FlxG.random.int(-4, 0);
 					trainStart();
 				}
-      case 'camp':
-        add(dadOpponent);
-        add(Mesita);
-        
-        remove(gf);
-        // Supongo que aca se va a arreglar el beat de dad
 		}
 	}
 
