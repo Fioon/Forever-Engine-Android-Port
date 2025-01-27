@@ -172,6 +172,7 @@ class PlayState extends MusicBeatState
 	public static var lastRating:FlxSprite;
 	// stores the last combo objects in an array
 	public static var lastCombo:Array<FlxSprite>;
+public static var instance:PlayState;
 
 	/*#if MOBILE_CONTROLS
 	var mControls:MobileDefine;
@@ -194,6 +195,7 @@ class PlayState extends MusicBeatState
 		super.create();
 
 		// reset any values and variables that are static
+  instance = this;
 		songScore = 0;
 		combo = 0;
 		health = 1;
