@@ -172,7 +172,7 @@ class PlayState extends MusicBeatState
 	public static var lastRating:FlxSprite;
 	// stores the last combo objects in an array
 	public static var lastCombo:Array<FlxSprite>;
-public static var instance:PlayState;
+        public static var instance:PlayState;
 
 	/*#if MOBILE_CONTROLS
 	var mControls:MobileDefine;
@@ -181,6 +181,7 @@ public static var instance:PlayState;
 	//public var camDisplaceExtend:Float = 40;
 	
 	var ftBf:Character;
+	public static var gfIcon:Character;
 	var scopeVin:FlxSprite;
 	var video:MP4Sprite; // black hole
         var video2:MP4Sprite; // wave efx
