@@ -195,7 +195,7 @@ public static var instance:PlayState;
 		super.create();
 
 		// reset any values and variables that are static
-  instance = this;
+                instance = this;
 		songScore = 0;
 		combo = 0;
 		health = 1;
@@ -504,19 +504,6 @@ public static var instance:PlayState;
 			var shader:GraphicsShader = new GraphicsShader("", File.getContent("./assets/shaders/vhs.frag"));
 			FlxG.camera.setFilters([new ShaderFilter(shader)]);
 		 */
-	}
-	
-	public function addCharacterToList(type:Int, name:String):Void
-	{
-		if(type==1){
-			boyfriendStrumSingCharacters.push(name);
-		}
-		if(type==2){
-			dadStrumSingCharacters.push(name);
-		}
-		if(type==3){
-			gfStrumSingCharacters.push(name);
-		}
 	}
 	
         public function addStreetShit():Void
