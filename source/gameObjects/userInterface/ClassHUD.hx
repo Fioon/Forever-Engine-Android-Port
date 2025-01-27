@@ -160,12 +160,12 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		var iconLerp = 0.85;
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
-		if(PlayState.curSong.toLowerCase() == 'pretence'){
-			iconP1.alpha = 0;
-			gfIcon.alpha = 1;
+		//if(PlayState.curSong.toLowerCase() == 'pretence'){
+		iconP1.alpha = 0;
+		gfIcon.alpha = 1;
 			//gfIcon.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
-			gfIcon.scale.set(iconP1.scale.x, iconP1.scale.y);
-		}
+		gfIcon.scale.set(iconP1.scale.x, iconP1.scale.y);
+		//}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
