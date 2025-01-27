@@ -20,6 +20,7 @@ import meta.CoolUtil;
 import meta.data.Conductor;
 import meta.data.Timings;
 import meta.state.PlayState;
+import gameObjects.Character;
 
 using StringTools;
 
@@ -42,6 +43,8 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
+
+	public var gfIcon:Character;
 
 	private var stupidHealth:Float = 0;
 
@@ -82,6 +85,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
 
+		gfIcon = new Character().setCharacter(0, 0, 'gfIcon');
+		PlayState.boyfriendStrumSingCharacters.push(gfIcon);
+		//gfIcon.cameras = [PlayState.camHUD];
+		//gfIcon.screenCenter();
+		add(gfIcon);
+		gfIcon.y = iconP1.y;
+		gfIcon.alpha = 0;
+
 		scoreBar = new FlxText(FlxG.width / 2, Math.floor(healthBarBG.y + 40), 0, scoreDisplay);
 		scoreBar.setFormat(Paths.font('vcr.ttf'), 18, FlxColor.WHITE);
 		scoreBar.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
@@ -97,7 +108,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		cornerMark.setPosition(FlxG.width - (cornerMark.width + 5), 5);
 		cornerMark.antialiasing = true;
 
-		centerMark = new FlxText(0, 0, 0, '- ${infoDisplay + " [" + diffDisplay}] -');
+		centerMark = new FlxText(0, 0, 0, '- ${infoDisplay} -');
 		centerMark.setFormat(Paths.font('vcr.ttf'), 24, FlxColor.WHITE);
 		centerMark.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		add(centerMark);
@@ -131,6 +142,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			}
 		}
 		updateScoreText();
+		
 	}
 
 	var counterTextSize:Int = 18;
@@ -148,14 +160,22 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		var iconLerp = 0.85;
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
+		if(PlayState.curSong.toLowerCase() == 'pretence'){
+			iconP1.alpha = 0;
+			gfIcon.alpha = 1;
+			//gfIcon.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
+			gfIcon.scale.set(iconP1.scale.x, iconP1.scale.y);
+		}
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+		gfIcon.updateHitbox();
 
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		gfIcon.x = iconP1.x;
 
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
