@@ -153,18 +153,18 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
 		iconP1.alpha = 0;
-		PlayState.gfIcon.alpha = 1;
-		PlayState.gfIcon.scale.set(iconP1.scale.x, iconP1.scale.y);
+		//PlayState.gfIcon.alpha = 1;
+		//PlayState.gfIcon.scale.set(iconP1.scale.x, iconP1.scale.y);
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
-		PlayState.gfIcon.updateHitbox();
+		//PlayState.gfIcon.updateHitbox();
 
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
-		PlayState.gfIcon.x = iconP1.x;
+		//PlayState.gfIcon.x = iconP1.x;
 
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
