@@ -85,7 +85,7 @@ class Main extends Sprite
 			note studders and shit its weird.
 		**/
 
-		#if windows
+		#if android
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
@@ -185,7 +185,7 @@ class Main extends Sprite
 
 	function onCrash(e:UncaughtErrorEvent):Void
 	{
-		#if windows
+		#if android
 		var errMsg:String = "";
 		var path:String;
 		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
@@ -194,7 +194,7 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = "crash/" + "FE_" + dateNow + ".txt";
+		path = SUtil.getPath() + "crash/" + "FE_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -209,8 +209,8 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/Yoshubs/Forever-Engine";
 
-		if (!FileSystem.exists("crash/"))
-			FileSystem.createDirectory("crash/");
+		if (!FileSystem.exists(SUtil.getPath() + "crash/"))
+			FileSystem.createDirectory(SUtil.getPath() + "crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
@@ -218,9 +218,9 @@ class Main extends Sprite
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
 		var crashDialoguePath:String = "FE-CrashDialog";
-
+  #if windows
 		crashDialoguePath += ".exe";
-
+  #end
 		if (FileSystem.exists(crashDialoguePath))
 		{
 			Sys.println("Found crash dialog: " + crashDialoguePath);
