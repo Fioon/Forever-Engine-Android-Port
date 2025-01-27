@@ -268,6 +268,14 @@ public static var instance:PlayState;
 				add(ftBf);
 				ftBf.dance();
 
+				gfIcon = new Character().setCharacter(0, 0, 'gfIcon');
+		                boyfriendStrumSingCharacters.push(gfIcon);
+				gfIcon.cameras = [camHUD];
+				gfIcon.screenCenter();
+				add(gfIcon);
+				//gfIcon.y = iconP1.y;
+				gfIcon.alpha = 0;
+
 				addStreetShit();
 				
 				forest = new FlxSpriteGroup();
