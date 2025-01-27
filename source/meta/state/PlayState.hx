@@ -7,6 +7,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxSubState;
+import openfl.display.BlendMode;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -279,7 +280,7 @@ class PlayState extends MusicBeatState
 				scopeVin.scale.set(1.6,1.61);
 				scopeVin.antialiasing = true;
 				scopeVin.alpha = 0;
-				scopeVin.blend = 0;
+				scopeVin.blend = ADD;
 				scopeVin.cameras = [camOverlay];
 				add(scopeVin);
 				scopeVin.setPosition(241,135);
@@ -308,7 +309,7 @@ class PlayState extends MusicBeatState
 				});
 				video3.bitmap.onEndReached.add(video3.destroy);
 				add(video3);
-				video3.blend = 0;
+				video3.blend = ADD;
 				video3.load(Paths.video('snow light'), [':input-repeat=65545']);
 				video3.play();
 				video3.alpha = 1;
@@ -540,7 +541,7 @@ class PlayState extends MusicBeatState
 		spotlight.antialiasing = true;
 		spotlight.scrollFactor.set(0.9, 0.9);
 		add(spotlight);
-		spotlight.blend = 0;
+		spotlight.blend = ADD;
 		spotlight.scale.set(1.4, 1.2);
 
 		var shadow:FlxSprite = new FlxSprite(100,-230).loadGraphic(Paths.image('shadow'));
@@ -580,7 +581,7 @@ class PlayState extends MusicBeatState
     FlxTween.tween(layer05, {x: -1210}, 205.0);
     layer05.alpha = 0.7;
     layer05.scrollFactor.set(0, 0);
-    layer05.blend = 0;
+    layer05.blend = ADD;
 
     var layer1:FlxSprite = new FlxSprite(-397,-585).loadGraphic(Paths.image('forestlayer1'));
     layer1.scale.set(0.7,0.7);
