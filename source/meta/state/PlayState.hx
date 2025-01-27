@@ -506,7 +506,7 @@ public static var instance:PlayState;
 		 */
 	}
 	
-	public static function addCharacterToList(type:Int, name:String):Void
+	public function addCharacterToList(type:Int, name:String):Void
 	{
 		if(type==1){
 			boyfriendStrumSingCharacters.push(name);
