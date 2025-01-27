@@ -40,6 +40,7 @@ import openfl.media.Sound;
 import openfl.utils.Assets;
 import hxvlc.flixel.FlxVideoSprite as MP4Sprite;
 import hxvlc.flixel.FlxVideo;
+import flixel.group.FlxSpriteGroup;
 
 /*#if MOBILE_CONTROLS
 import android.MobileControls;
