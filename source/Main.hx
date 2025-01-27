@@ -22,7 +22,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.events.UncaughtErrorEvent;
-#if windows
+#if android
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
