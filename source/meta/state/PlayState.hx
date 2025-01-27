@@ -506,6 +506,19 @@ public static var instance:PlayState;
 		 */
 	}
 	
+	public static function addCharacterToList(type:Int, name:String):Void
+	{
+		if(type==1){
+			boyfriendStrumSingCharacters.push(name);
+		}
+		if(type==2){
+			dadStrumSingCharacters.push(name);
+		}
+		if(type==3){
+			gfStrumSingCharacters.push(name);
+		}
+	}
+	
         public function addStreetShit():Void
 	{
 		var layer1:FlxSprite = new FlxSprite(-340,-485).loadGraphic(Paths.image('layer1'));
