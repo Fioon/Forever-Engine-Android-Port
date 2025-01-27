@@ -44,7 +44,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 
-	public var gfIcon:Character;
+	//public var gfIcon:Character;
 
 	private var stupidHealth:Float = 0;
 
