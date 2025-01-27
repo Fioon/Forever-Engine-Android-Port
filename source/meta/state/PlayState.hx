@@ -179,9 +179,9 @@ class PlayState extends MusicBeatState
 	
 	var ftBf:Character;
 	var scopeVin:FlxSprite;
-	var video; // black hole
-        var video2; // wave efx
-        var video3; // snow
+	var video:MP4Sprite; // black hole
+        var video2:MP4Sprite; // wave efx
+        var video3:MP4Sprite; // snow
 	var forest:FlxSpriteGroup;
         var spotlight:FlxSprite;
 	
