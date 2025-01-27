@@ -86,7 +86,8 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		add(iconP2);
 
 		gfIcon = new Character().setCharacter(0, 0, 'gfIcon');
-		PlayState.instance.boyfriendStrumSingCharacters.push(gfIcon);
+		//PlayState.instance.boyfriendStrumSingCharacters.push(gfIcon);
+		PlayState.addCharacterToList(1,'gfIcon');
 		//gfIcon.cameras = [PlayState.camHUD];
 		//gfIcon.screenCenter();
 		add(gfIcon);
