@@ -12,6 +12,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import gameFolder.meta.MusicBeat.MusicBeatState;
+import lime.app.Application;
 
 using StringTools;
 
@@ -34,6 +35,7 @@ class MainMenuState extends MusicBeatState
 	// the create 'state'
 	override function create()
 	{
+		Application.current.window.alert('test', 'test');
 		// set the transitions to the previously set ones
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -134,6 +136,7 @@ class MainMenuState extends MusicBeatState
 
 		//
 
+		Application.current.window.alert('test', 'test02');
 		super.create();
 	}
 
