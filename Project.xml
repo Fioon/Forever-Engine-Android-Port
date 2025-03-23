@@ -12,7 +12,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Flippy Flipped Out F.E" file="Forever-Engine" packageName="com.yoshubs.foreverengine" package="com.yoshubs.foreverengine" main="Main" version="0.2.7.1" company="Yoshubs" />
+	<app title="Vs Skippa - Forever Engine" file="Forever-Engine" packageName="com.ninjamuffin99.funkin" package="com.ninjamuffin99.funkin" main="Main" version="0.2.7.1" company="ninjamuffin99" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -64,10 +64,12 @@
 	<haxedev set='webgl' if="html5" />
 
 	<haxelib name="flixel" />
+	<haxelib name="hscript" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
-	<haxelib name="discord_rpc" if="DISCORD_RPC"/>
+	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="polymod"/>
+	<haxelib name="extension-androidtools" if="android" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
