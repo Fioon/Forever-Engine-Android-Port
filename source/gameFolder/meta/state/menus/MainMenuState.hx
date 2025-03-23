@@ -35,7 +35,7 @@ class MainMenuState extends MusicBeatState
 	// the create 'state'
 	override function create()
 	{
-		Application.current.window.alert('test', 'test');
+		//Application.current.window.alert('test', 'test');
 		// set the transitions to the previously set ones
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
@@ -46,7 +46,7 @@ class MainMenuState extends MusicBeatState
 		// uh
 		persistentUpdate = persistentDraw = true;
 
-		Application.current.window.alert('test', 'test03');
+		//Application.current.window.alert('test', 'test03');
 		
 		// background
 		bg = new FlxSprite(-85);
@@ -70,7 +70,7 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 
-		Application.current.window.alert('test', 'test04');
+		//Application.current.window.alert('test', 'test04');
 
 		// add the camera
 		camFollow = new FlxObject(0, 0, 1, 1);
@@ -125,7 +125,7 @@ class MainMenuState extends MusicBeatState
 		var camLerp = Main.framerateAdjust(0.06);
 		FlxG.camera.follow(camFollow, null, camLerp);
 
-		Application.current.window.alert('test', 'test05');
+		//Application.current.window.alert('test', 'test05');
 		updateSelection();
 
 		// from the base game lol
@@ -135,7 +135,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		Application.current.window.alert('test', 'test06');
+		//Application.current.window.alert('test', 'test06');
 
 		#if android
 		addVirtualPad(UP_DOWN, A);
@@ -143,7 +143,7 @@ class MainMenuState extends MusicBeatState
 
 		//
 
-		Application.current.window.alert('test', 'test02');
+		//Application.current.window.alert('test', 'test02');
 		super.create();
 	}
 
