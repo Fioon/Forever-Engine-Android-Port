@@ -135,7 +135,6 @@ class PlayState extends MusicBeatState
 	// at the beginning of the playstate
 	override public function create()
 	{
-		Application.current.window.alert('test', 'test01');
 		// reset any values and variables that are static
 		songScore = 0;
 		combo = 0;
@@ -290,7 +289,6 @@ class PlayState extends MusicBeatState
 
 		add(camFollow);
 
-		Application.current.window.alert('test', 'test02');
 		// set up camera dependencies (so that ui elements correspond to their cameras and such)
 		strumLineNotes.cameras = [camHUD];
 		splashNotes.cameras = [camHUD];
@@ -315,12 +313,10 @@ class PlayState extends MusicBeatState
 		add(uiHUD);
 		uiHUD.cameras = [camHUD];
 		//
-		Application.current.window.alert('test', 'test03');
 		#if android
 		addAndroidControls();
 		#end
 
-		Application.current.window.alert('test', 'test04');
 		// call the funny intro cutscene depending on the song
 		if (isStoryMode)
 			songIntroCutscene();
@@ -1704,6 +1700,7 @@ class PlayState extends MusicBeatState
 		#if android
 		androidControls.visible = true;
 		#end
+		Application.current.window.alert('test', 'test07');
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
 
@@ -1785,5 +1782,6 @@ class PlayState extends MusicBeatState
 			swagCounter += 1;
 			// generateSong('fresh');
 		}, 5);
+		Application.current.window.alert('test', 'test08');
 	}
 }
