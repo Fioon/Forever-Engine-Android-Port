@@ -96,6 +96,8 @@ class Main extends Sprite
 			note studders and shit its weird.
 		**/
 
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		
 		#if html5
 		framerate = 60;
 		#end
