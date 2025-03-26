@@ -80,13 +80,15 @@ class SUtil
                 #end
         }
 
+        public static function gameCrashCheck()
+        {
+                Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+        }
         /**
          * Uncaught error handler original made by: sqirra-rng
          */
-        public static function uncaughtErrorHandler()
+        public static function onCrash(e:UncaughtErrorEvent):Void
         {
-                Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, function(u:UncaughtErrorEvent)
-                {
                         var callStack:Array<StackItem> = CallStack.exceptionStack(true);
                         var errMsg:String = '';
 
@@ -117,7 +119,6 @@ class SUtil
                                 SUtil.applicationAlert('Error!', "Clouldn't save the crash dump because: " + e);
 
                         System.exit(1);
-                });
         }
 
         static function applicationAlert(title:String, description:String)
