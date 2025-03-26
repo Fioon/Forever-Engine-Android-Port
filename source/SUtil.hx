@@ -103,7 +103,7 @@ class SUtil
                                 }
                         }
 
-                        errMsg += u.error;
+                        errMsg += e.error;
 
                         Sys.println(errMsg);
                         SUtil.applicationAlert('Error!', errMsg);
