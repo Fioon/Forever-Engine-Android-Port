@@ -1696,11 +1696,11 @@ class PlayState extends MusicBeatState
 
 	private function startCountdown():Void
 	{
-		Application.current.window.alert('test', 'test06');
+		//Application.current.window.alert('test', 'test06');
 		#if android
 		androidControls.visible = true;
 		#end
-		Application.current.window.alert('test', 'test07');
+		//Application.current.window.alert('test', 'test07');
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
 
@@ -1782,6 +1782,6 @@ class PlayState extends MusicBeatState
 			swagCounter += 1;
 			// generateSong('fresh');
 		}, 5);
-		Application.current.window.alert('test', 'test08');
+		//Application.current.window.alert('test', 'test08');
 	}
 }
