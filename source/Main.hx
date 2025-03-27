@@ -126,6 +126,7 @@ class Main extends Sprite
 		gameHeight = 720;
 		zoom = 1;
 		#end
+		SUtil.check();
 		//Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 
 		// here we set up the base game
