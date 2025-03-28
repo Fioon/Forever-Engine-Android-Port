@@ -115,6 +115,11 @@ class Init extends FlxState
 
 	override public function create():Void
 	{
+		try{
+			#if android
+		        FlxG.android.preventDefaultKeys = [BACK];
+		        #end
+		}
 		FlxG.save.bind('funkin', 'forever');
 		Highscore.load();
 
